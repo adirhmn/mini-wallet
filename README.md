@@ -163,8 +163,11 @@ Install Docker by following the instructions for your operating system from [her
    ```bash
    cd repository-directory
    ```
+2. Create an .env file
 
-2. Start Docker Compose
+    You can create it by changing the `.env-example` file to `.env`
+
+3. Start Docker Compose
 
    Make sure Docker is installed and running on your system.
      Run the following command to start the application using Docker Compose:
