@@ -1,0 +1,894 @@
+{
+	"info": {
+		"_postman_id": "75825a9c-c9a7-45a0-b55a-5f96a18971eb",
+		"name": "Mini-Wallet",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11731835"
+	},
+	"item": [
+		{
+			"name": "Initialize account for my wallet",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"customer_xid\":\"e337aef0-b0aa-444b-8559-489603215b57\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}init",
+					"host": [
+						"{{host}}init"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "initialized successfully",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"customer_xid\":\"e337aef0-b0aa-444b-8559-489603215b57\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}init",
+							"host": [
+								"{{host}}init"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "date",
+							"value": "Sat, 20 Jan 2024 00:25:16 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "205"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"success\",\n    \"data\": {\n        \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlMzM3YWVmMC1iMGFhLTQ0NGItODU1OS00ODk2MDMyMTViNTciLCJleHAiOjE3MDU3MTM5MTd9.-FVpbV_Uzk3yj8sxOOU3K3NrMa-7WDEA3RqcmfeNpuM\"\n    }\n}"
+				},
+				{
+					"name": "failed missing required field",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"customer_id\":\"e337aef0-b0aa-444b-8559-489603215b57\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}init",
+							"host": [
+								"{{host}}init"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "date",
+							"value": "Sat, 20 Jan 2024 00:26:13 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "88"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"fail\",\n    \"data\": {\n        \"error\": {\n            \"customer_xid\": [\n                \"Missing data for required field.\"\n            ]\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Disable my wallet",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"is_disabled\":\"true\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}wallet",
+					"host": [
+						"{{host}}wallet"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "failed as already disabled",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"is_disabled\":\"true\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}wallet",
+							"host": [
+								"{{host}}wallet"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "date",
+							"value": "Sat, 20 Jan 2024 00:28:04 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "53"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"fail\",\n    \"data\": {\n        \"error\": \"Already disabled\"\n    }\n}"
+				},
+				{
+					"name": "disabled successfully",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"is_disabled\":\"true\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}wallet",
+							"host": [
+								"{{host}}wallet"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "date",
+							"value": "Sat, 20 Jan 2024 00:29:29 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "213"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"success\",\n    \"data\": {\n        \"wallet\": {\n            \"id\": \"bd00238b-36a9-41c8-a15d-b6b7a91af383\",\n            \"owned_by\": \"e337aef0-b0aa-444b-8559-489603215b57\",\n            \"status\": \"disabled\",\n            \"disabled_at\": \"2024-01-20T07:29:29+07:00\",\n            \"balance\": 999900\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Enable my wallet",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{host}}wallet",
+					"host": [
+						"{{host}}wallet"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "enabled successfully",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}wallet",
+							"host": [
+								"{{host}}wallet"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "date",
+							"value": "Sat, 20 Jan 2024 00:30:08 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "211"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"success\",\n    \"data\": {\n        \"wallet\": {\n            \"id\": \"bd00238b-36a9-41c8-a15d-b6b7a91af383\",\n            \"owned_by\": \"e337aef0-b0aa-444b-8559-489603215b57\",\n            \"status\": \"enabled\",\n            \"enabled_at\": \"2024-01-20T07:30:09+07:00\",\n            \"balance\": 999900\n        }\n    }\n}"
+				},
+				{
+					"name": "failed as already enabled",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}wallet",
+							"host": [
+								"{{host}}wallet"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "date",
+							"value": "Sat, 20 Jan 2024 00:30:34 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "52"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"fail\",\n    \"data\": {\n        \"error\": \"Already enabled\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "View my wallet balance",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{host}}wallet",
+					"host": [
+						"{{host}}wallet"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "viewed successfully",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}wallet",
+							"host": [
+								"{{host}}wallet"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "date",
+							"value": "Sat, 20 Jan 2024 00:31:01 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "211"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"success\",\n    \"data\": {\n        \"wallet\": {\n            \"id\": \"bd00238b-36a9-41c8-a15d-b6b7a91af383\",\n            \"owned_by\": \"e337aef0-b0aa-444b-8559-489603215b57\",\n            \"status\": \"enabled\",\n            \"enabled_at\": \"2024-01-20T07:30:09+07:00\",\n            \"balance\": 999900\n        }\n    }\n}"
+				},
+				{
+					"name": "failed not yet enabled",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}wallet",
+							"host": [
+								"{{host}}wallet"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "date",
+							"value": "Sat, 20 Jan 2024 00:32:10 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "52"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"fail\",\n    \"data\": {\n        \"error\": \"Wallet disabled\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "View my transactions wallet",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{host}}wallet/transactions",
+					"host": [
+						"{{host}}wallet"
+					],
+					"path": [
+						"transactions"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "viewed successfully",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}wallet/transactions",
+							"host": [
+								"{{host}}wallet"
+							],
+							"path": [
+								"transactions"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "date",
+							"value": "Sat, 20 Jan 2024 00:32:54 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "2586"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"success\",\n    \"data\": {\n        \"transactions\": [\n            {\n                \"id\": \"57278115-3874-4269-a5ed-1cde2e97dd75\",\n                \"status\": \"success\",\n                \"transacted_at\": \"2024-01-19T21:13:07+07:00\",\n                \"type\": \"withdrawal\",\n                \"amount\": 100,\n                \"reference_id\": \"50535d246-dcc4-4929-8cc9-094eaks063295\"\n            },\n            {\n                \"id\": \"edc756b3-c989-45ec-a25e-04e0b7b4de77\",\n                \"status\": \"success\",\n                \"transacted_at\": \"2024-01-19T21:12:35+07:00\",\n                \"type\": \"deposit\",\n                \"amount\": 1000000,\n                \"reference_id\": \"50535246-dc02-4929-8cc9-004ea06f5291\"\n            },\n            {\n                \"id\": \"2c5a61fa-c239-4890-8a28-23a93521dbc0\",\n                \"status\": \"failed\",\n                \"transacted_at\": \"2024-01-19T21:10:26+07:00\",\n                \"type\": \"withdrawal\",\n                \"amount\": 100,\n                \"reference_id\": \"50535246-dcc4-4929-8cc9-094eaks063295\"\n            },\n            {\n                \"id\": \"542dc9e8-181b-4b62-9164-1ae198c611c8\",\n                \"status\": \"failed\",\n                \"transacted_at\": \"2024-01-19T21:09:00+07:00\",\n                \"type\": \"withdrawal\",\n                \"amount\": 5000,\n                \"reference_id\": \"50535246-dcc4-4929-8cc9-094eak063295\"\n            },\n            {\n                \"id\": \"a811221d-eb0d-4a5c-94e8-cd713895f3fc\",\n                \"status\": \"failed\",\n                \"transacted_at\": \"2024-01-19T20:04:10+07:00\",\n                \"type\": \"withdrawal\",\n                \"amount\": 0,\n                \"reference_id\": \"50535246-dcc4-4929-8cc9-094eak063285\"\n            },\n            {\n                \"id\": \"c5c8f667-4601-469d-889a-cc4735d056fb\",\n                \"status\": \"failed\",\n                \"transacted_at\": \"2024-01-19T20:02:46+07:00\",\n                \"type\": \"withdrawal\",\n                \"amount\": 0,\n                \"reference_id\": \"50535246-dcb4-4929-8cc9-094eak063285\"\n            },\n            {\n                \"id\": \"ea1f9138-eade-4254-93bf-ce13e1ad6eb9\",\n                \"status\": \"failed\",\n                \"transacted_at\": \"2024-01-19T20:02:39+07:00\",\n                \"type\": \"withdrawal\",\n                \"amount\": 0,\n                \"reference_id\": \"50535246-dcb4-4929-8cc9-004eak063285\"\n            },\n            {\n                \"id\": \"b8daa69b-9978-4479-bb5d-ba3be732a692\",\n                \"status\": \"failed\",\n                \"transacted_at\": \"2024-01-19T20:02:33+07:00\",\n                \"type\": \"withdrawal\",\n                \"amount\": 0,\n                \"reference_id\": \"50535246-dcb4-4929-8cc9-004ea063285\"\n            },\n            {\n                \"id\": \"179878d4-f2a0-465e-b53e-c4468168a98a\",\n                \"status\": \"success\",\n                \"transacted_at\": \"2024-01-19T20:02:10+07:00\",\n                \"type\": \"withdrawal\",\n                \"amount\": 10000,\n                \"reference_id\": \"50535246-dcb4-4929-8cc9-004ea06f3285\"\n            },\n            {\n                \"id\": \"d4c03faf-a423-49ba-bc97-051fb806dd20\",\n                \"status\": \"failed\",\n                \"transacted_at\": \"2024-01-19T20:02:00+07:00\",\n                \"type\": \"withdrawal\",\n                \"amount\": 100000,\n                \"reference_id\": \"50535246-dcb2-4929-8cc9-004ea06f3285\"\n            },\n            {\n                \"id\": \"97abbbf6-b35b-4398-8081-828a15eac2bd\",\n                \"status\": \"success\",\n                \"transacted_at\": \"2024-01-19T20:01:35+07:00\",\n                \"type\": \"deposit\",\n                \"amount\": 10000,\n                \"reference_id\": \"50535246-dcb2-4929-8cc9-004ea06f5291\"\n            },\n            {\n                \"id\": \"5ce06612-78ef-45ee-8e38-f4e7a81c7502\",\n                \"status\": \"failed\",\n                \"transacted_at\": \"2024-01-19T20:01:14+07:00\",\n                \"type\": \"withdrawal\",\n                \"amount\": 10000,\n                \"reference_id\": \"50535246-dcb2-4929-8cc9-004ea06f3225\"\n            },\n            {\n                \"id\": \"d3b6e5b7-0873-4f52-b4b1-5c14a11704a3\",\n                \"status\": \"failed\",\n                \"transacted_at\": \"2024-01-19T20:01:04+07:00\",\n                \"type\": \"deposit\",\n                \"amount\": -1000,\n                \"reference_id\": \"50535246-dcb2-4929-8cc9-004ea06f5241\"\n            }\n        ]\n    }\n}"
+				},
+				{
+					"name": "failed not yet enabled",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}wallet/transactions",
+							"host": [
+								"{{host}}wallet"
+							],
+							"path": [
+								"transactions"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "date",
+							"value": "Sat, 20 Jan 2024 00:36:37 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "52"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"fail\",\n    \"data\": {\n        \"error\": \"Wallet disabled\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Add virtual money to my wallet",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"amount\":250000,\n    \"reference_id\":\"50535246-dc02-4929-8cc9-004pa06f5291\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}wallet/deposits",
+					"host": [
+						"{{host}}wallet"
+					],
+					"path": [
+						"deposits"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "failed not yet enabled",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"amount\":250000,\n    \"reference_id\":\"50535246-dc02-4929-8cc9-004ea06f5291\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}wallet/deposits",
+							"host": [
+								"{{host}}wallet"
+							],
+							"path": [
+								"deposits"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "date",
+							"value": "Sat, 20 Jan 2024 00:37:20 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "52"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"fail\",\n    \"data\": {\n        \"error\": \"Wallet disabled\"\n    }\n}"
+				},
+				{
+					"name": "added successfully",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"amount\":250000,\n    \"reference_id\":\"50535246-dc02-4929-8cc9-004wa06f5291\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}wallet/deposits",
+							"host": [
+								"{{host}}wallet"
+							],
+							"path": [
+								"deposits"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "date",
+							"value": "Sat, 20 Jan 2024 00:38:22 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "271"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"success\",\n    \"data\": {\n        \"deposit\": {\n            \"id\": \"635a746a-65c3-45aa-9269-366d8ed287cb\",\n            \"deposited_by\": \"e337aef0-b0aa-444b-8559-489603215b57\",\n            \"status\": \"success\",\n            \"deposited_at\": \"2024-01-20T07:38:22+07:00\",\n            \"amount\": 250000,\n            \"reference_id\": \"50535246-dc02-4929-8cc9-004wa06f5291\"\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Use virtual money from my wallet Copy",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"amount\":20000,\n    \"reference_id\":\"50535d246-dcc4-4929-8ccw-091eaks063295\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}wallet/withdrawals",
+					"host": [
+						"{{host}}wallet"
+					],
+					"path": [
+						"withdrawals"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "failed not yet enabled",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"amount\":100,\n    \"reference_id\":\"50535d246-dcc4-4929-8cc9-094eaks063295\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}wallet/withdrawals",
+							"host": [
+								"{{host}}wallet"
+							],
+							"path": [
+								"withdrawals"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "date",
+							"value": "Sat, 20 Jan 2024 00:37:42 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "52"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"fail\",\n    \"data\": {\n        \"error\": \"Wallet disabled\"\n    }\n}"
+				},
+				{
+					"name": "withdrawn successfully",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"amount\":30000,\n    \"reference_id\":\"50535d246-dcc4-4929-8cc9-091eaks063295\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}wallet/withdrawals",
+							"host": [
+								"{{host}}wallet"
+							],
+							"path": [
+								"withdrawals"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "date",
+							"value": "Sat, 20 Jan 2024 00:38:57 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "278"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"success\",\n    \"data\": {\n        \"deposit\": {\n            \"id\": \"7d52c533-a43c-4d46-abaa-23a82e6a5673\",\n            \"withdrawn_by_by\": \"e337aef0-b0aa-444b-8559-489603215b57\",\n            \"status\": \"success\",\n            \"withdrawn_by_at\": \"2024-01-20T07:38:57+07:00\",\n            \"amount\": 30000,\n            \"reference_id\": \"50535d246-dcc4-4929-8cc9-091eaks063295\"\n        }\n    }\n}"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "http://localhost:8000/api/v1/",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlMzM3YWVmMC1iMGFhLTQ0NGItODU1OS00ODk2MDMyMTViNTciLCJleHAiOjE3MDU2NTE5MjJ9.xtXGwMdyzQJ5o4YyYcYWYINtYFS9EsPoEZhc-SNVH_s",
+			"type": "string"
+		}
+	]
+}
