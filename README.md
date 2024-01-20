@@ -258,11 +258,11 @@ To simplify API testing, you can use the provided Postman collection.
    - Update variables like `YOUR_TOKEN` with a valid token obtained from the Init API.
 
 5. **Execute Requests:**
-   - Execute requests to register a user, deposit funds, check balance, and more.
+   - Execute requests to init account, deposit, withdrawn, check balance, and more.
 
 
 
-_For screenshot usage, please refer to the [Documentation](https://github.com/adirhmn/mini-wallet/tree/main/documentation)_
+_For screenshot, please look up to the [Documentation](https://github.com/adirhmn/mini-wallet/tree/main/documentation)_
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
