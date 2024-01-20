@@ -28,7 +28,7 @@
     <li>
       <a href="#about-the-project">About The Project</a>
       <ul>
-      <li><a href="#built-with">Key Features</a></li>
+      <li><a href="#key-features">Key Features</a></li>
         <li><a href="#built-with">Built With</a></li>
       </ul>
     </li>
@@ -36,7 +36,7 @@
       <a href="#getting-started">Getting Started</a>
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">How to Running Project</a></li>
+        <li><a href="#how-to-running-project">How to Running Project</a></li>
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
