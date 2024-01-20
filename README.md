@@ -52,32 +52,32 @@
 
 
 ### Key Features
-<b>1. Initial Account<b>
+<b>1. Initial Account</b>
 
 Customer can create or sign to account by providing customer id.
 
-<b>2. Authentication and Authorization<b>
+<b>2. Authentication and Authorization</b>
 
 The application provides authentication mechanisms to protect customer data.
 Each request to the API needs to be authorized using an authentication token provided during init account.
 
-<b>3. Deposit Funds<b>
+<b>3. Deposit Funds</b>
 
 Customer can deposit funds into their digital wallets by specifying the amount they want to deposit.After a successful deposit, the customer's wallet balance will be updated accordingly.
 
-<b>4. Withdrawal of Funds<b>
+<b>4. Withdrawal of Funds</b>
 
 Customer can withdraw funds from their digital wallets by specifying the amount they want to withdraw.The system will check the availability of funds and process the withdrawal if sufficient funds are present.
 
-<b>5. Check Balance<b>
+<b>5. Check Balance</b>
 
 Customer can check their wallet balance at any time.
 
-<b>6. Transaction History<b>
+<b>6. Transaction History</b>
 
 The application provides an endpoint to view the customer's transaction history, including deposits and withdrawals.
 
-<b>7. Wallet Status<b>
+<b>7. Wallet Status</b>
 
 Customer can enable or disable their wallets based on their preference.
 When a wallet is disabled, no deposit or withdrawal transactions can be initiated.
