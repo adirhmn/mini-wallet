@@ -116,14 +116,8 @@ Make sure Git is installed on your computer. If not, you can download and instal
 2. Docker Installation:
 
 Install Docker by following the instructions for your operating system from [here](https://docs.docker.com/desktop/install/windows-install/).
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
 
 ### How To Running Project
-
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
 
 #### Clone Repository to Local
 
@@ -265,7 +259,7 @@ To simplify API testing, you can use the provided Postman collection.
 
 
 
-_For screenshot, please refer to the [Documentation](https://github.com/adirhmn/mini-wallet/tree/main/documentation)_
+_For screenshot usage, please refer to the [Documentation](https://github.com/adirhmn/mini-wallet/tree/main/documentation)_
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
