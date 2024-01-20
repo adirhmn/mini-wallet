@@ -59,7 +59,7 @@ class TransactionService:
             raise err_withdraw
         return new_transaction
     
-    def check_existing_wallet(self) -> [any, bool]:
+    def check_existing_wallet(self) -> Wallet:
         exist_wallet = self.db.query(Wallet).filter(Wallet.owner == self.customer_xid).first()
         if not exist_wallet:
             raise CustomHTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail={"error": "Wallet not registered"})
@@ -67,13 +67,13 @@ class TransactionService:
             raise CustomHTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail={"error": "Wallet disabled"})
         return exist_wallet
     
-    def validate_amount(self, transaction_amount: int):
+    def validate_amount(self, transaction_amount: int) -> (any, bool):
         if transaction_amount <= 0:
             error = CustomHTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail={"error": "Amount must be higher than 0"})
             return error, False
         return None, True
     
-    def validate_withdrawal(self, wallet: Wallet,transaction_amount: int) -> [any, bool]:
+    def validate_withdrawal(self, wallet: Wallet,transaction_amount: int) -> (any, bool):
         current_balance = wallet.get_balance()
         if transaction_amount > current_balance:
             error = CustomHTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail={"error": "Balance is not enough"})
